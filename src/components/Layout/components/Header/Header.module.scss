@@ -1,4 +1,9 @@
 .wrapper {
+    --search-border-redius: 92px;
+    --seatch-height: 46px;
+    --search-top-speacer: 9px;
+    --search-button-width: 52px;
+
     width: 100%;
     height: var(--default-layout-header, 60px);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
@@ -9,4 +14,74 @@
 .content {
     height: 100%;
     width: var(--default-layout-width, 1150px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+}
+
+.search {
+    position: relative;
+    width: 500px;
+    height: var(--seatch-height);
+    padding-left: 16px;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-redius);
+    border: 1px solid transparent;
+    input {
+        //width: 431px;
+        height: 100%;
+        color: var(--black);
+        font-size: 1.6rem;
+        background-color: transparent;
+        caret-color: var(--primary);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgba(22, 24, 35, 0.75);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: var(--search-top-speacer);
+        right: var(--search-button-width);
+        height: calc(var(--seatch-height) - var(--search-top-speacer) * 2);
+        width: 1px;
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+
+.clear-btn,
+.loading {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: calc(var(--search-button-width) + 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.search-btn {
+    float: right;
+    width: var(--search-button-width);
+    height: 100%;
+    border-top-right-radius: var(--search-border-redius);
+    border-bottom-right-radius: var(--search-border-redius);
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
 }
